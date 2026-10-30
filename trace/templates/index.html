@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trace: find where an image comes from</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<main>
+  <header>
+    <h1>Trace</h1>
+    <p>Find where an image appears online.</p>
+  </header>
+
+  <div class="viewfinder" id="frame">
+    <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+    <div class="window">
+      <img id="preview" alt="Your image" hidden>
+      <div class="prompt">
+        <p>Drop a photo here, or</p>
+        <div class="actions">
+          <button type="button" class="btn primary" id="take">Take photo</button>
+          <button type="button" class="btn" id="choose">Choose file</button>
+        </div>
+      </div>
+      <div class="scan" aria-hidden="true"></div>
+    </div>
+  </div>
+  <input type="file" id="camera" accept="image/*" capture="environment" hidden>
+  <input type="file" id="file" accept="image/*" hidden>
+
+  <form id="url-form">
+    <label for="url">Or paste an image link</label>
+    <div class="row">
+      <input id="url" type="url" inputmode="url" autocomplete="off" placeholder="https://example.com/photo.jpg">
+      <button class="btn">Search</button>
+    </div>
+  </form>
+  <button type="button" class="btn" id="reset" hidden>Start over</button>
+
+  <p id="status" class="status" role="status"></p>
+  <div id="results"></div>
+</main>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
